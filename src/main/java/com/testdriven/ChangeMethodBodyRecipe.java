@@ -45,7 +45,6 @@ public class ChangeMethodBodyRecipe extends Recipe {
 
             @Override
             public @NotNull MethodDeclaration visitMethodDeclaration(@NotNull MethodDeclaration methodDeclaration, @NotNull ExecutionContext executionContext) {
-                System.out.println("cycyle: " + executionContext.getCycle());
                 if ( ! methodMatcher.matches(methodDeclaration.getMethodType())) {
                     return methodDeclaration;
                 }
