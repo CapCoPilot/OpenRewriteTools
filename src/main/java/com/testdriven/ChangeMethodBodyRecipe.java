@@ -37,8 +37,7 @@ public class ChangeMethodBodyRecipe extends Recipe {
             // Used to identify the method declaration that will be refactored
             private final MethodMatcher methodMatcher = new MethodMatcher(signature);
 
-
-            // Template used to add statements to the method body of the "setCustomerInfo()" method
+            // Template used to add statements to the method body
             private final JavaTemplate addStatementsTemplate = JavaTemplate.builder(
                             methodBody)
                     .contextSensitive()
@@ -46,21 +45,20 @@ public class ChangeMethodBodyRecipe extends Recipe {
 
             @Override
             public @NotNull MethodDeclaration visitMethodDeclaration(@NotNull MethodDeclaration methodDeclaration, @NotNull ExecutionContext executionContext) {
+                System.out.println("cycyle: " + executionContext.getCycle());
                 if ( ! methodMatcher.matches(methodDeclaration.getMethodType())) {
                     return methodDeclaration;
                 }
 
-                // Safe to assert since we just added a body to the method
-                assert methodDeclaration.getBody() != null;
-
-                if( ! methodDeclaration.getBody().getStatements().isEmpty()) {
+                //only append once
+                if( executionContext.getCycle() > 1 ) {
                     return methodDeclaration;
                 }
 
-                // Add the assignment statements to the "setCustomerInfo()" method body
-                methodDeclaration = addStatementsTemplate.apply(updateCursor(methodDeclaration), methodDeclaration.getBody().getCoordinates().lastStatement());
+                assert methodDeclaration.getBody() != null;
 
-                return methodDeclaration;
+                //append method body
+                return addStatementsTemplate.apply(updateCursor(methodDeclaration), methodDeclaration.getBody().getCoordinates().lastStatement());
             }
         };
     }

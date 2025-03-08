@@ -11,7 +11,7 @@ val rewriteVersion = rewriteRecipe.rewriteVersion.get()
 
 dependencies {
     compileOnly("org.projectlombok:lombok:latest.release")
-    compileOnly("com.google.code.findbugs:jsr305:latest.release")
+    //compileOnly("com.google.code.findbugs:jsr305:latest.release")
     annotationProcessor("org.projectlombok:lombok:latest.release")
     implementation(platform("org.openrewrite:rewrite-bom:${rewriteVersion}"))
 

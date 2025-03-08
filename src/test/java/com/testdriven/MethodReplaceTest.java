@@ -27,6 +27,8 @@ public class MethodReplaceTest implements RewriteTest {
                                 private Date dateOfBirth;
                                 private String firstName;
                                 private String lastName;
+                                
+                                public void foo(String lastName) {}
         
                                 public void setCustomerInfo(String lastName) {
                                 }
@@ -41,6 +43,8 @@ public class MethodReplaceTest implements RewriteTest {
                                 private Date dateOfBirth;
                                 private String firstName;
                                 private String lastName;
+                                
+                                public void foo(String lastName) {}
         
                                 public void setCustomerInfo(String lastName) {
                                     System.out.println("hello");
