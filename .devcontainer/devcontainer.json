@@ -2,8 +2,12 @@
   "name": "Gradle Dev Container",
   "image": "mcr.microsoft.com/devcontainers/java:1-21",
   "features": {
-    "ghcr.io/devcontainers/features/gradle:1": {}
+    "ghcr.io/devcontainers/features/java:1": {
+      "version": "none",
+      "installGradle": "true"
+    }
   },
+
   "forwardPorts": [],
   "postCreateCommand": "./gradlew test"
 }
