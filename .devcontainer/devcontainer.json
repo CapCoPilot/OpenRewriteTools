@@ -1,16 +1,8 @@
 {
   "name": "Gradle Dev Container",
-  "image": "mcr.microsoft.com/devcontainers/java:21",
+  "image": "mcr.microsoft.com/devcontainers/java:1-21",
   "features": {
     "ghcr.io/devcontainers/features/gradle:1": {}
-  },
-  "customizations": {
-    "vscode": {
-      "extensions": [
-        "vscjava.vscode-java-pack",
-        "ms-azuretools.vscode-gradle"
-      ]
-    }
   },
   "forwardPorts": [],
   "postCreateCommand": "./gradlew test"
