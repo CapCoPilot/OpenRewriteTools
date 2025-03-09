@@ -6,13 +6,12 @@ group = "com.testdriven"
 description = "Experiments with OpenRewrite"
 
 //The bom version can also be set to a specific version or latest.release.
-val rewriteVersion = rewriteRecipe.rewriteVersion.get()
+val rewriteVersion = "8.47.4"
 
 
 dependencies {
-    compileOnly("org.projectlombok:lombok:latest.release")
-    //compileOnly("com.google.code.findbugs:jsr305:latest.release")
-    annotationProcessor("org.projectlombok:lombok:latest.release")
+    compileOnly("org.projectlombok:lombok:1.18.+")
+    annotationProcessor("org.projectlombok:lombok:1.18.+")
     implementation(platform("org.openrewrite:rewrite-bom:${rewriteVersion}"))
 
     implementation("org.openrewrite:rewrite-java")
